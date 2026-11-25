@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagnose Performance Gaps"
+  short_description: "逐项诊断实测仍慢或未达目标的场景，判断哪些改法值得尝试。"
+  default_prompt: "使用 $diagnose-performance-gaps 分析这份慢项表，列出值得尝试的方案、停止的依据及尚未查清的范围。"

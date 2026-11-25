@@ -1,0 +1,4 @@
+interface:
+  display_name: "Noise-Resilient Benchmarking"
+  short_description: "在负载波动下设计可复验的测量，对照实际运行的版本并解释结果。"
+  default_prompt: "使用 $noise-resilient-benchmarking 核对这两个版本的测量条件，说明已有结果能支持什么结论。"

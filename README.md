@@ -1,27 +1,23 @@
-# optimize-project-performance
+# Optimize Project Performance
 
-把项目提速从定位瓶颈做到交付：在真实入口跑基线，逐项试验，在同一交付工件上复验收益、正确性和回归边界。既可从头全面优化，也可续接已有实测；只要求分析时，不改代码。
+这套工具提供三个 Codex Skill，可按任务选择入口。要交付一个经过实测的优化版本，从主入口开始：需要测量时转入测量专项，选定版本仍有已证实的退步或未达已确认目标时转入差距诊断。同一任务在入口之间切换时，沿用原项目记录、预算和复测次数。
 
-## 适用场景
+## 选择入口
 
-- **全面优化：** 盘点主要入口和代表负载，明确目标、保护项和预算，再决定哪些改动值得进入最终版本。
-- **已有实测：** 核对版本、覆盖和证据，区分真实退步、已确认目标未达和仅仅证据不足。按需读取慢项优化方法，不重跑无关项。
-- **只做分析：** 交付最值得查证的瓶颈、最小对照试验和停止条件。
+| Codex 显示名与入口文件 | 使用示例 |
+| --- | --- |
+| [Optimize Project Performance](skills/optimize-project-performance/SKILL.md) | 使用 `$optimize-project-performance` 为这个项目提速，在同一个最终版本上验证收益、功能和相邻入口。 |
+| [Noise-Resilient Benchmarking](skills/noise-resilient-benchmarking/SKILL.md) | 使用 `$noise-resilient-benchmarking` 比较 A、B 两版在同一负载下的耗时，并说明机器波动会怎样影响结论。 |
+| [Diagnose Performance Gaps](skills/diagnose-performance-gaps/SKILL.md) | 使用 `$diagnose-performance-gaps` 分析这份最终版本的慢项表，指出哪些方案值得试、哪些可以停止，以及理由。 |
 
-## 安装与使用
+「可独立调用」指可以直接从任一入口开始，不必先运行主 Skill。例如，只需要设计或复核跑分，就直接调用测量入口；已有实测差距，只需要查原因，就直接调用诊断入口。若诊断还需要补测或进入选版，它会用到对应的专项或主入口。要跑完整优化流程，请从同一标签或提交安装三个 Skill，不要混用版本。
 
-在支持从 GitHub 安装 Skill 的宿主中，可交给安装器以下请求：
+直接从本地使用时，让 Agent 读取上表对应的入口文件；如需其他入口，沿用同一份本地文件树。只要求分析或设计测量时，交付判断、方案和停止条件。改动代码、采集数据、采用例外和发布沿用任务本身的授权。历史案例中的数值只适用于对应案例。
 
-> 请从 https://github.com/AresJef/optimize-project-performance 安装 optimize-project-performance，仓库根路径是 .，固定到 v1.0.0。
+## 安装
 
-也可下载 [v1.0.0](https://github.com/AresJef/optimize-project-performance/releases/tag/v1.0.0) 源码，将目录命名为 `optimize-project-performance` 并放到宿主支持的 Skill 路径。保留根目录的 `SKILL.md` 和 `references/`，不要覆盖既有同名 Skill，安装后确认宿主能发现它。
+把下面这句话发给 Codex：
 
-示例：
-
-> 使用 $optimize-project-performance，只分析这个库，不改代码。基于真实使用入口找出最值得验证的瓶颈，列出基线、最小对照试验和停止条件。
-
-完整流程见 [SKILL.md](SKILL.md)。参考文档按需读取，不要求额外安装基准工具。历史案例数值不是默认门槛。使用此 Skill 不授予测量、改代码、采用例外或发布的权限，按本次任务的授权执行。
-
-[agents/openai.yaml](agents/openai.yaml) 仅提供 OpenAI 宿主的可选界面信息，不影响技能流程。
+> 请用 `$skill-installer` 安装 [AresJef/optimize-project-performance](https://github.com/AresJef/optimize-project-performance) 中 `skills/` 下的三个 Skill：`optimize-project-performance`、`noise-resilient-benchmarking`、`diagnose-performance-gaps`。三个都使用同一标签或提交。
 
 [MIT License](LICENSE)
