@@ -1,4 +1,4 @@
 interface:
-  display_name: "项目运行性能优化"
+  display_name: "Optimize Project Performance"
   short_description: "从真实入口定位性能瓶颈、设计可复验的试验，并核对同一交付版本的收益与回归。"
   default_prompt: "使用 $optimize-project-performance 分析这个项目的性能瓶颈，先给出基线、最小对照试验和停止条件，不改代码。"
